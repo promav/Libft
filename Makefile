@@ -1,9 +1,10 @@
 NAME = libft.a
 
-SRCS = lib_1.c lib_2.c
+SRCS = lib_1.c lib_2.c lib_3.c
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
