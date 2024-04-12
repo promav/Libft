@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabromer <pabromer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:49:17 by pabromer          #+#    #+#             */
-/*   Updated: 2024/04/09 14:37:23 by pabromer         ###   ########.fr       */
+/*   Created: 2024/04/12 11:45:00 by pabromer          #+#    #+#             */
+/*   Updated: 2024/04/12 12:54:17 by pabromer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int					i;
-	int					r;
-	const unsigned char	*src1;
-	const unsigned char	*src2;
+	void	*p;
 
-	src1 = (const unsigned char *) s1;
-	src2 = (const unsigned char *) s2;
-	if (n == 0)
-		return (0);
-	i = 0;
-	r = 0;
-	while (i < n - 1 && src1[i] == src2[i])
-		i++;
-	r = src1[i] - src2[i];
-	if (r > 0)
-		r = 1;
-	else if (r < 0)
-		r = -1;
-	return (r);
+	p = (void *)malloc(count * size);
+	if (p)
+		ft_bzero(p, count * size);
+	else
+		return (NULL);
+	return (p);
 }

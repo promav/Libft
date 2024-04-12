@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabromer <pabromer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:49:17 by pabromer          #+#    #+#             */
-/*   Updated: 2024/04/09 14:37:23 by pabromer         ###   ########.fr       */
+/*   Created: 2024/04/12 12:59:14 by pabromer          #+#    #+#             */
+/*   Updated: 2024/04/12 12:59:39 by pabromer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	int					i;
-	int					r;
-	const unsigned char	*src1;
-	const unsigned char	*src2;
+	size_t	count;
+	char	*dest;
+	int		i;
 
-	src1 = (const unsigned char *) s1;
-	src2 = (const unsigned char *) s2;
-	if (n == 0)
-		return (0);
-	i = 0;
-	r = 0;
-	while (i < n - 1 && src1[i] == src2[i])
-		i++;
-	r = src1[i] - src2[i];
-	if (r > 0)
-		r = 1;
-	else if (r < 0)
-		r = -1;
-	return (r);
+	count = ft_strlen(s1);
+	dest = (char *)malloc(count + 1);
+	if (dest)
+	{
+		i = 0;
+		while (i < count + 1)
+		{
+			dest[i] = s1[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	else
+		return (NULL);
+	return (dest);
 }
