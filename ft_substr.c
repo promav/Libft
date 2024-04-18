@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabromer <pabromer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 10:12:48 by pabromer          #+#    #+#             */
-/*   Updated: 2024/04/09 14:19:34 by pabromer         ###   ########.fr       */
+/*   Created: 2024/04/13 10:29:38 by pabromer          #+#    #+#             */
+/*   Updated: 2024/04/13 13:11:00 by pi               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		j;
-	size_t	i;
-	size_t	k;
+	char	*subs;
+	int		i;
+	size_t	ssize;
 
-	j = 0;
-	i = ft_strlen(dst);
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	if (dstsize < i)
-		return (ft_strlen(src) + dstsize);
-	k = i;
-	while (i < dstsize - 1 && src[j] != '\0')
+	subs = (char *) malloc(len + 1);
+	if (subs)
 	{
-		dst[i] = src[j];
-		i++;
-		j++;
+		i = 0;
+		subs[i] = '\0';
+		if (s[i] == '\0')
+			return (subs);
+		if (start > ft_strlen(s))
+			return (subs);
+		while (s[i] != '\0')
+		{
+			if (i == start)
+				ssize = ft_strlcpy(subs, &s[i], len + 1);
+			i++;
+		}
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src) + k);
+	else
+		return (NULL);
+	return (subs);
 }
