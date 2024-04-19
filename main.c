@@ -1,8 +1,11 @@
 #include "libft.h"
-#include "string.h"
+#include "stdio.h"
 
 int main()
 {
-    ft_memcpy(((void *)0), ((void *)0) ,3);
+    char *a = "olaComo estan los maquinasloa";
+	char *b = "alo";
+
+	printf("%s", ft_strtrim(a, b));
     return 0;
 }
