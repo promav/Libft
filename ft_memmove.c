@@ -12,8 +12,10 @@
 #include "libft.h"
 
 static unsigned char	*destbsrc(unsigned char *d, unsigned char *s,
-size_t len, int i)
+size_t len)
 {
+	size_t i;
+	
 	i = len - 1;
 	while (i >= 0)
 	{
@@ -25,7 +27,7 @@ size_t len, int i)
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	int				i;
+	size_t			i;
 	unsigned char	*d;
 	unsigned char	*s;
 
@@ -35,7 +37,7 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 		return (dest);
 	if (d > s && d - s < (int)len)
 	{
-		destbsrc(d, s, len, i);
+		destbsrc(d, s, len);
 		return (dest);
 	}
 	if (s > d && s - d < (int)len)
