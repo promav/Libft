@@ -16,19 +16,12 @@ char	*ft_strdup(const char *s1)
 {
 	size_t	count;
 	char	*dest;
-	size_t	i;
 
-	count = ft_strlen(s1);
-	dest = (char *)malloc(count + 1);
+	count = ft_strlen(s1) + 1;
+	dest = (char *)malloc(count);
 	if (dest)
 	{
-		i = 0;
-		while (i < count + 1)
-		{
-			dest[i] = s1[i];
-			i++;
-		}
-		dest[i] = '\0';
+		dest = (char *) ft_memcpy(dest, s1, count);
 	}
 	else
 		return (NULL);

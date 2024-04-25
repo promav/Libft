@@ -79,5 +79,7 @@ char	**ft_split(char const *s, char c)
 	if (!ssplit)
 		return (NULL);
 	ssplit = fillsplit(ssplit, s, c);
+	if (!ssplit)
+		return (freessplit(ssplit, mallocsize(s, c)));
 	return (ssplit);
 }

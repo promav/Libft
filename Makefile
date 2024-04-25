@@ -14,9 +14,17 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rcs $@ $^
 	@echo "make all correct"
-$(OBJS): $(SRCS)
+
+$(OBJS): %.o:%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-	
+
+bonus: $(BONUSOBJS)
+	@ar rcs $(NAME) $^
+	@echo "make bonus correct"
+
+$(BONUSOBJS): %.o:%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
 	@rm -f *.o
 	@echo "make clean correct"
@@ -27,10 +35,5 @@ fclean: clean
 
 re: fclean all
 	@echo "make re correct"
-
-bonus: $(BONUSOBJS)
-	@ar rcs $@ $^
-	@$(CC) $(CFLAGS) -c $(BONUSSRCS)-o $(BONUSSRCS)
-	@echo "make bonus correct"
 
 .PHONY: all clean flean re bonus
